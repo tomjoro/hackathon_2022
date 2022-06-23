@@ -77,7 +77,15 @@ World loop
  If there a Car is in same grid position as a Moose or Pot Hole then it is stuck.
  Car will be notified of time penalty and must obey. Cheating not allowed.
 
+hackathon_driver
+hackathon_backend
+hackathon_map
+
 ## Driver
+
+hackathon_driver
+
+
 
 ### User interface
 
@@ -105,7 +113,6 @@ Button to press Go.
 
 Two main live views:
 
-
 Send the map to the server.
 Map is sent back every change. display it.
 
@@ -118,7 +125,8 @@ Once registered, they wait for a "GO" message from the server.
 Pressing buttons sends messages to the server.
 
 
-## Simulation
+## Backend
+### Simulation
 
 A car is like the CPU of the car. In the first version it just takes commands from it's driver.
 In future it might take actions.
@@ -134,8 +142,6 @@ Pot holes might move (make it up)
 
 --> In future version cars might have some intelligence <--
 
-## World
-
 World receives "initialize"
 World reads and instantiates Moose and Pot-holes from Map.
 World waits for Cars to register and creates cars.
@@ -144,6 +150,18 @@ World enters processing loop
 * Position is returned.
 * Collision are calculated and returned
 * A list of all objects, position and collision is sent back to driver.
+
+
+## Map
+
+Map setups player grid with Moose and potholes.
+Sends list to backend for startup
+Tells backend to go
+
+Receives lists of all objects (car, moose, ph) and displays them on a grid.
+The state should be held in a m x n grid and updated as the state is received from server.
+
+Then liveview can render it.
 
 
 ## Game Play
